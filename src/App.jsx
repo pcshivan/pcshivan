@@ -1,5 +1,5 @@
 /* global __app_id, __firebase_config, __initial_auth_token */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react'; // Removed useRef as it's not used
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
@@ -662,7 +662,8 @@ const App = () => {
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-40 shadow-lg py-4 px-4 md:px-8 lg:px-16 flex flex-col md:flex-row justify-between items-center backdrop-blur-sm">
         <div className="text-white text-3xl font-extrabold tracking-wider mb-4 md:mb-0 font-cinzel">
-          <a href="#" onClick={() => navigate('home')} className="hover:text-purple-400 transition-colors duration-300">PC SHIVAN</a>
+          {/* Changed href from "#" to "/" for better accessibility and semantic correctness */}
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('home'); }} className="hover:text-purple-400 transition-colors duration-300">PC SHIVAN</a>
         </div>
         <nav className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-lg font-inter">
           <button onClick={() => navigate('home')} className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-semibold transform hover:scale-105">Home</button>
